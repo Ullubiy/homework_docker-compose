@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  maven:
+    build: homework_docker
+    volumes:
+      - artifacts:/artifacts
+ 
+  web:
+    image: tomcat:9-jre8-alpine
+    ports:
+      - "8080:8080"
+    volumes:
+      - artifacts:/usr/local/tomcat/webapps
+
+volumes:
+  artifacts:
